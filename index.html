@@ -1,22 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
     <meta charset="UTF-8">
-    <title>Jian Jiade - Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jian Jiade | RF & Wireless Professional</title>
     <style>
-        body { font-family: sans-serif; text-align: center; padding: 50px; background-color: #f4f4f4; }
-        .container { background: white; padding: 30px; border-radius: 10px; display: inline-block; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        h1 { color: #333; }
-        p { color: #666; }
-        .link-button { display: block; margin: 10px; padding: 10px 20px; background: #007bff; color: white; text-decoration: none; border-radius: 5px; }
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #666;
+            --bg-color: #ffffff;
+            --btn-bg: #f5f5f7;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .profile-card {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: #eee; /* 在你上傳照片前顯示為灰色圓圈 */
+            margin-bottom: 24px;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin: 0 0 8px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .title {
+            font-size: 16px;
+            color: var(--secondary-color);
+            margin-bottom: 32px;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .link-item {
+            display: block;
+            padding: 16px;
+            background-color: var(--btn-bg);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .link-item:hover {
+            background-color: #e8e8ed;
+            transform: translateY(-2px);
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #999;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+
+    <div class="profile-card">
+        <!-- 如果你有大頭照，請將檔名改為 avatar.jpg 並上傳到同一個目錄 -->
+        <img src="https://via.placeholder.com/120" alt="Jian Jiade" class="avatar">
+        
         <h1>Jian Jiade</h1>
-        <p>RF & Wireless Technology Professional</p>
-        <a href="https://linkedin.com" class="link-button">LinkedIn</a>
-        <a href="mailto:your-email@example.com" class="link-button">Email Me</a>
+        <p class="title">RF System Integration | Antenna Engineering<br>Wireless Technology Strategy</p>
+
+        <div class="links">
+            <a href="https://linkedin.com" target="_blank" class="link-item">LinkedIn 專業履歷</a>
+            <a href="https://github.com/cm99g" target="_blank" class="link-item">GitHub 技術專案</a>
+            <a href="mailto:your-email@example.com" class="link-item">Email 聯繫我</a>
+        </div>
+
+        <footer>
+            © 2026 Jian Jiade. Built with GitHub Pages.
+        </footer>
     </div>
+
 </body>
 </html>

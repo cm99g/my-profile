@@ -3,109 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jian Jiade | 個人首頁</title>
+    <title>Jian Jiade | RF & Wireless Professional</title>
     <style>
         :root {
-            --primary-color: #1a1a1a;
-            --secondary-color: #666;
-            --bg-color: #ffffff;
+            --bg: #ffffff;
+            --text: #1d1d1f;
+            --secondary: #86868b;
             --btn-bg: #f5f5f7;
             --btn-hover: #e8e8ed;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--primary-color);
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             margin: 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .profile-card {
+        .container {
             width: 100%;
             max-width: 400px;
-            padding: 40px 20px;
+            padding: 20px;
             text-align: center;
         }
 
-        .avatar {
-            width: 120px;
-            height: 120px;
+        .profile-img {
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
-            background-color: #f0f0f0;
-            margin-bottom: 24px;
             object-fit: cover;
-            border: 1px solid #eee;
+            margin-bottom: 20px;
+            background-color: var(--btn-bg);
+            /* 防止照片不存在時出現破碎圖示 */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
         }
 
         h1 {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 600;
             margin: 0 0 8px 0;
             letter-spacing: -0.5px;
         }
 
-        .title {
+        .bio {
             font-size: 16px;
-            color: var(--secondary-color);
-            margin-bottom: 35px;
-            font-weight: 400;
+            color: var(--secondary);
+            margin-bottom: 30px;
+            line-height: 1.4;
         }
 
         .links {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
-        .link-item {
+        .link-btn {
             display: block;
             padding: 16px;
             background-color: var(--btn-bg);
-            color: var(--primary-color);
+            color: var(--text);
             text-decoration: none;
-            border-radius: 14px;
+            border-radius: 12px;
             font-weight: 500;
-            transition: all 0.2s ease;
-            border: 1px solid transparent;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .link-item:hover {
+        .link-btn:hover {
             background-color: var(--btn-hover);
-            transform: translateY(-2px);
-            border: 1px solid #ddd;
+            transform: scale(1.02);
         }
 
         footer {
             margin-top: 50px;
             font-size: 12px;
-            color: #bbb;
-            letter-spacing: 0.5px;
+            color: #d2d2d7;
         }
     </style>
 </head>
 <body>
 
-    <div class="profile-card">
-        <!-- 系統會自動讀取你上傳到儲存庫的 avatar.jpg -->
-        <img src="avatar.jpg" alt="Jian Jiade" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=Jian+Jiade&size=120&background=f5f5f7'">
+    <div class="container">
+        <!-- 如果 avatar.jpg 不存在，會自動改用帶名字的圖示 -->
+        <img src="avatar.jpg" 
+             alt="Jian Jiade" 
+             class="profile-img" 
+             onerror="this.src='https://ui-avatars.com/api/?name=Jian+Jiade&size=120&background=f5f5f7&color=1d1d1f'">
         
         <h1>Jian Jiade</h1>
-        <p class="title">RF & Wireless System Integration<br>Professional Professional</p>
+        <p class="bio">RF System Integration Specialist<br>Antenna & Wireless Technology</p>
 
         <div class="links">
-            <!-- 請在下方 href 引號內填入你真正的連結 -->
-            <a href="https://github.com/cm99g" target="_blank" class="link-item">GitHub Projects</a>
-            <a href="https://www.linkedin.com" target="_blank" class="link-item">LinkedIn Profile</a>
-            <a href="mailto:your-email@example.com" class="link-item">Contact Me</a>
+            <!-- 這些連結你可以之後再手動修改 -->
+            <a href="https://linkedin.com" target="_blank" class="link-btn">LinkedIn Profile</a>
+            <a href="https://github.com/cm99g" target="_blank" class="link-btn">GitHub Portfolio</a>
+            <a href="mailto:your-email@example.com" class="link-btn">Email Contact</a>
         </div>
 
         <footer>
-            © 2026 JIAN JIADE. All Rights Reserved.
+            © 2026 Jian Jiade
         </footer>
     </div>
 

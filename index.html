@@ -3,221 +3,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jian Jiade | 專業資歷入口網</title>
+    <title>Jian Jiade | Professional Dashboard</title>
     <style>
         :root {
-            --primary-dark: #121212;
-            --accent-blue: #2563eb;
-            --accent-orange: #f97316;
-            --bg-gray: #f8fafc;
-            --text-main: #334155;
-            --text-light: #64748b;
+            --bg-color: #f4f1ea; 
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --primary-dark: #2c3e50; 
+            --accent-orange: #e67e22; 
+            --text-main: #333333;
+            --text-sub: #666666;
+            --line-color: #eee;
         }
 
         body {
-            font-family: 'Inter', -apple-system, system-ui, sans-serif;
-            background-color: var(--bg-gray);
+            font-family: 'Inter', -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            background-image: linear-gradient(135deg, #e5e5e5 25%, transparent 25%), 
+                              linear-gradient(225deg, #e5e5e5 25%, transparent 25%);
+            background-size: 80px 80px;
             margin: 0;
             display: flex;
             justify-content: center;
-            padding: 40px 15px;
-            color: var(--text-main);
+            align-items: center;
+            padding: 40px 20px;
+            min-height: 100vh;
         }
 
-        .resume-wrapper {
-            background: white;
+        .main-card {
+            background: var(--card-bg);
             width: 100%;
-            max-width: 960px;
-            padding: 60px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
-            border-radius: 4px;
+            max-width: 950px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.1);
             display: grid;
-            grid-template-columns: 1.4fr 1fr;
-            gap: 50px;
-            position: relative;
-        }
-
-        /* 背景裝飾：模擬「圖片.png」的簡潔感 */
-        .resume-wrapper::before {
-            content: "HELLO,";
-            position: absolute;
-            right: -20px;
-            top: 50%;
-            writing-mode: vertical-rl;
-            font-size: 80px;
-            font-weight: 900;
-            color: #f1f5f9;
-            z-index: 0;
-            transform: translateY(-50%);
-            letter-spacing: 10px;
-        }
-
-        .content-layer { z-index: 1; position: relative; }
-
-        /* Header 區域 */
-        header {
-            grid-column: 1 / -1;
-            display: flex;
-            align-items: center;
-            margin-bottom: 50px;
-            border-bottom: 1px solid #f1f5f9;
-            padding-bottom: 30px;
-        }
-
-        .avatar-frame {
-            width: 140px;
-            height: 140px;
-            background: #e2e8f0;
-            border-radius: 24px;
-            margin-right: 35px;
+            grid-template-columns: 1fr 1.2fr;
             overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
-        .avatar-frame img { width: 100%; height: 100%; object-fit: cover; }
+        /* 左側欄位 */
+        .left-panel {
+            padding: 50px;
+            border-right: 1px solid var(--line-color);
+        }
 
-        .name-block h1 { font-size: 48px; margin: 0; letter-spacing: -2px; color: var(--primary-dark); }
-        .name-block p { font-size: 16px; color: var(--accent-blue); font-weight: 700; text-transform: uppercase; letter-spacing: 3px; margin: 8px 0; }
-        
-        .contact-row { display: flex; gap: 25px; font-size: 14px; color: var(--text-light); }
-
-        /* 標題樣式 */
-        h2 {
-            font-size: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin: 0 0 20px 0;
-            color: var(--primary-dark);
+        .avatar-group {
             display: flex;
             align-items: center;
+            margin-bottom: 40px;
         }
-        h2::after { content: ""; flex: 1; height: 1px; background: #e2e8f0; margin-left: 15px; }
 
-        /* 技能進度條 (結合圖片.jpg) */
-        .skill-box { margin-bottom: 18px; }
-        .skill-info { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 6px; font-weight: 600; }
-        .progress-track { height: 6px; background: #f1f5f9; border-radius: 3px; }
-        .progress-fill { height: 100%; background: var(--primary-dark); border-radius: 3px; }
-        .orange-fill { background: var(--accent-orange); }
+        .avatar {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+            border: 3px solid white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
 
-        /* 經歷與教育 */
-        .timeline-item { margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 2px solid #f1f5f9; }
-        .timeline-year { font-size: 12px; font-weight: 800; color: var(--accent-blue); display: block; }
-        .timeline-title { font-size: 15px; font-weight: 700; margin: 4px 0; }
-        .timeline-desc { font-size: 13px; color: var(--text-light); line-height: 1.5; }
+        .info h1 { font-size: 28px; margin: 0; color: var(--primary-dark); letter-spacing: -1px; }
+        .info p { font-size: 13px; color: var(--accent-orange); font-weight: 700; text-transform: uppercase; margin: 4px 0; letter-spacing: 1px; }
+
+        section { margin-bottom: 35px; }
+        h2 { font-size: 16px; text-transform: uppercase; border-bottom: 2px solid var(--primary-dark); display: inline-block; margin-bottom: 15px; letter-spacing: 1px; }
+        
+        .about-p { font-size: 14px; line-height: 1.8; color: var(--text-sub); text-align: justify; margin: 0; }
+
+        /* 技能條樣式 */
+        .skill-item { margin-bottom: 18px; }
+        .skill-info { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; margin-bottom: 6px; }
+        .progress-bar { width: 100%; height: 6px; background: #dfe6e9; border-radius: 10px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--primary-dark); transition: width 1s; }
+        .highlight { background: var(--accent-orange); }
+
+        /* 右側欄位 */
+        .right-panel { padding: 50px; background: rgba(255, 255, 255, 0.4); }
+
+        .timeline-item { margin-bottom: 25px; position: relative; padding-left: 20px; border-left: 2px solid var(--line-color); }
+        .time-tag { font-size: 11px; font-weight: 800; color: var(--accent-orange); display: block; }
+        .job-title { font-size: 15px; font-weight: 700; margin: 3px 0; color: var(--primary-dark); }
+        .job-desc { font-size: 13px; color: var(--text-sub); line-height: 1.5; }
 
         /* 興趣標籤 */
-        .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { padding: 6px 14px; background: #f1f5f9; border-radius: 8px; font-size: 13px; font-weight: 500; }
+        .tag-container { display: flex; flex-wrap: wrap; gap: 8px; }
+        .interest-tag { padding: 6px 12px; background: #eee; border-radius: 6px; font-size: 12px; font-weight: 500; color: var(--primary-dark); }
+
+        .social-row { display: flex; gap: 15px; margin-top: 20px; }
+        .social-btn { width: 35px; height: 35px; border-radius: 50%; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; text-decoration: none; color: var(--primary-dark); font-size: 13px; transition: 0.2s; }
+        .social-btn:hover { background: var(--primary-dark); color: white; }
 
         @media (max-width: 850px) {
-            .resume-wrapper { grid-template-columns: 1fr; padding: 40px 30px; }
-            header { flex-direction: column; text-align: center; }
-            .avatar-frame { margin: 0 0 20px 0; }
-            .contact-row { justify-content: center; flex-wrap: wrap; }
+            .main-card { grid-template-columns: 1fr; }
+            .left-panel { border-right: none; border-bottom: 1px solid var(--line-color); }
         }
     </style>
 </head>
 <body>
 
-    <div class="resume-wrapper">
-        <header class="content-layer">
-            <div class="avatar-frame">
-                <img src="avatar.jpg" alt="Jian Jiade" onerror="this.src='https://ui-avatars.com/api/?name=J&background=121212&color=fff&size=140'">
-            </div>
-            <div class="name-block">
-                <h1>Jian Jiade</h1>
-                <p>RF & Wireless Strategy Leader</p>
-                <div class="contact-row">
-                    <span>📍 新北市五股區</span>
-                    <span>✉️ 商務聯繫</span>
-                    <span>🔗 LinkedIn Profile</span>
+    <div class="main-card">
+        <div class="left-panel">
+            <div class="avatar-group">
+                <img src="avatar.jpg" alt="Jian Jiade" class="avatar" onerror="this.src='https://ui-avatars.com/api/?name=J&background=2c3e50&color=fff'">
+                <div class="info">
+                    <h1>Jian Jiade</h1>
+                    <p>RF & Wireless Strategy Leader</p>
                 </div>
             </div>
-        </header>
 
-        <!-- 左側：關於我、技能、語言、興趣 -->
-        <div class="left-col content-layer">
-            <section style="margin-bottom: 45px;">
+            <section>
                 <h2>About Me</h2>
-                <p style="font-size: 14px; line-height: 1.8; color: var(--text-main);">
-                    擁有超過 13 年射頻系統整合實績，曾主導智慧型手機與汽車無線通訊研發。深信「第一性原理」，致力於拆解複雜技術並轉化為具商業價值的解決方案。目前專注於醫材 CDMO 轉型與宇泰科技的技術策略佈局。
+                <p class="about-p">
+                    擁有 13 年射頻系統整合實績，橫跨手機研發與車載電子領域。專精於從第一性原理出發，優化複雜的無線通訊架構。目前深耕醫材 CDMO 領域，致力於將頂尖無線技術轉化為可靠的醫療產品。
                 </p>
             </section>
 
-            <section style="margin-bottom: 45px;">
-                <h2>Expertise Dashboard</h2>
-                <div class="skill-box">
+            <section>
+                <h2>Expertise</h2>
+                <div class="skill-item">
                     <div class="skill-info"><span>RF System Integration</span><span>95%</span></div>
-                    <div class="progress-track"><div class="progress-fill" style="width: 95%;"></div></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
                 </div>
-                <div class="skill-box">
-                    <div class="skill-info"><span>Antenna System Optimization</span><span>90%</span></div>
-                    <div class="progress-track"><div class="progress-fill orange-fill" style="width: 90%;"></div></div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Antenna Design & Optimization</span><span>90%</span></div>
+                    <div class="progress-bar"><div class="progress-fill highlight" style="width: 90%;"></div></div>
                 </div>
-                <div class="skill-box">
-                    <div class="skill-info"><span>Wireless Strategy & Consulting</span><span>85%</span></div>
-                    <div class="progress-track"><div class="progress-fill" style="width: 85%;"></div></div>
-                </div>
-            </section>
-
-            <section style="margin-bottom: 45px;">
-                <h2>Languages</h2>
-                <div class="skill-box">
-                    <div class="skill-info"><span>Mandarin (Native)</span><span>100%</span></div>
-                    <div class="progress-track"><div class="progress-fill" style="width: 100%;"></div></div>
-                </div>
-                <div class="skill-box">
-                    <div class="skill-info"><span>English (Professional)</span><span>80%</span></div>
-                    <div class="progress-track"><div class="progress-fill" style="width: 80%;"></div></div>
+                <div class="skill-item">
+                    <div class="skill-info"><span>Language: Mandarin / English</span><span>90%</span></div>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
                 </div>
             </section>
 
             <section>
                 <h2>Interests</h2>
-                <div class="tag-cloud">
-                    <span class="tag">高頻交易策略</span>
-                    <span class="tag">羅漢松栽培</span>
-                    <span class="tag">車輛性能優化</span>
-                    <span class="tag">空間布局 (Feng Shui)</span>
+                <div class="tag-container">
+                    <span class="interest-tag">高頻交易策略</span>
+                    <span class="interest-tag">羅漢松栽培</span>
+                    <span class="interest-tag">汽車改裝</span>
+                    <span class="interest-tag">空間佈局</span>
                 </div>
             </section>
+
+            <div class="social-row">
+                <a href="https://linkedin.com" class="social-btn">In</a>
+                <a href="https://github.com/cm99g" class="social-btn">Gh</a>
+                <a href="mailto:your-email@example.com" class="social-btn">@</a>
+            </div>
         </div>
 
-        <!-- 右側：經驗、教育 -->
-        <div class="right-col content-layer">
-            <section style="margin-bottom: 45px;">
+        <div class="right-panel">
+            <section>
                 <h2>Experience</h2>
                 <div class="timeline-item">
-                    <span class="timeline-year">2026 - Present</span>
-                    <div class="timeline-title">宇泰科技 (Yutai Technology) | 創辦人</div>
-                    <div class="timeline-desc">主導醫材 CDMO 發展與無線通訊系統策略諮詢。</div>
+                    <span class="time-tag">2026 - PRESENT</span>
+                    <div class="job-title">宇泰科技 (Yutai Technology) | 創辦人</div>
+                    <div class="job-desc">專注於醫材 CDMO 轉型與無線技術策略佈局。</div>
                 </div>
                 <div class="timeline-item">
-                    <span class="timeline-year">2023 - 2026</span>
-                    <div class="timeline-title">Automotive Electronics | Senior Tech Manager</div>
-                    <div class="timeline-desc">負責車載無線整合與天線系統開發。</div>
+                    <span class="time-tag">2023 - 2026</span>
+                    <div class="job-title">Automotive Systems | Senior Manager</div>
+                    <div class="job-desc">主導車載無線系統與天線整合開發。</div>
                 </div>
                 <div class="timeline-item">
-                    <span class="timeline-year">2013 - 2023</span>
-                    <div class="timeline-title">Smartphone R&D | RF Integration Leader</div>
-                    <div class="timeline-desc">主導多款旗艦手機射頻設計與天線量產規劃。</div>
+                    <span class="time-tag">2013 - 2023</span>
+                    <div class="job-title">Smartphone R&D | Senior RF Leader</div>
+                    <div class="job-desc">負責旗艦手機射頻設計與全球量產化整合。</div>
                 </div>
             </section>
 
             <section>
                 <h2>Education</h2>
                 <div class="timeline-item">
-                    <span class="timeline-year">2012</span>
-                    <div class="timeline-title">RF & Communication Engineering</div>
-                    <div class="timeline-desc">專攻電磁波理論與無線通訊系統開發。</div>
+                    <span class="time-tag">2012</span>
+                    <div class="job-title">RF & Communication Engineering</div>
+                    <div class="job-desc">專攻電磁波理論與無線通訊系統基礎。</div>
                 </div>
             </section>
-            
-            <!-- QR Code 模擬區塊 -->
-            <section style="margin-top: 50px; text-align: center;">
-                <div style="width: 100px; height: 100px; background: #f1f5f9; margin: 0 auto; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 10px; color: #cbd5e1;">QR CODE<br>PLACEHOLDER</div>
-                <p style="font-size: 11px; color: #94a3b8; margin-top: 10px;">Scan to save contact</p>
-            </section>
+
+            <div style="margin-top: 40px; text-align: right;">
+                <p style="font-size: 11px; color: #bbb;">© 2026 JIAN JIADE | BUILT WITH FIRST PRINCIPLES</p>
+            </div>
         </div>
     </div>
 
